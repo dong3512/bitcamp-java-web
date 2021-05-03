@@ -62,6 +62,7 @@ public class Servlet01 extends GenericServlet {
 // 웹 애플리케이션의 정보를 두는 폴더이기 때문이다.
 
 // HTTP 요청 형식
+//
 // method sp request-URI sp http_version CRLF
 // *(general header | request header | entity header) CRLF
 // CRLF
@@ -69,13 +70,24 @@ public class Servlet01 extends GenericServlet {
 //
 // GET 요청 HTTP 프로토콜 예)
 // => GET 요청은 데이터를 request-URI에 붙여서 보낸다.
-// => request-URI 예)
-// /java-web/ex04/s1?name=%ED%99%8D%EA%B8%B8%EB%8F%99&age=20
-// 서블릿 URL : /java-web/ex04/s1
-// 데이터(Query String) : name=%ED%99%8D%EA%B8%B8%EB%8F%99&age=20
+// => request-URI 
+//  예) /java-web/ex04/s1?name=%ED%99%8D%EA%B8%B8%EB%8F%99&age=20
+//  서블릿 URL : /java-web/ex04/s1
+//   데이터(Query String) : name=%ED%99%8D%EA%B8%B8%EB%8F%99&age=20
 // => 데이터 형식
-// 이름=값&이름=값&이름=값
+//  이름=값&이름=값&이름=값
+// => request-URI는 URI 규칙엥 따라 인코딩되어야 한다.
+//
 // => URL 인코딩
+// - URL 작성 규칙에 따라 데이터를 변환하는 것.
+// - 문법
+//   원래 코드를 4비트 단위로 짤라서 문자로 간주하고 URL 인코딩 테이블에 따라 변환한다.
+// 
+
+// URL 인코딩 예)
+// 1) 사용자가 웹 브라우저 주소 창에 입력한 값
+//    문자(사람 눈에 보이는 상태) => ...?name=AB가각&age=20
+//    코드(메모리에 저장된 상태)  => ...3f
 // - 데이터를 보낼 때 7bit 네트워크 장비를 거치면 8비트 데이터가 깨진다.
 // - 이를 방지하고자 보내는 데이터를 7비트로 변환한다.
 // - 어떻게? 원래 코드 값을 아스키(ASCII) 문자 코드로 변환한다.
